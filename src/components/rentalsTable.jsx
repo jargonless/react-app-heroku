@@ -4,16 +4,11 @@ import { Link } from "react-router-dom"
 import Table from "./common/table"
 import Like from "./common/like"
 
-class MoviesTable extends Component {
+class RentalsTable extends Component {
   columns = [
-    {
-      path: "title",
-      label: "Title",
-      content: movie => <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
-    },
-    { path: "genre.name", label: "Genre" },
-    { path: "numberInStock", label: "Stock" },
-    { path: "dailyRentalRate", label: "Rate" },
+    { path: "movie.title", label: "Title" },
+    { path: "movie.genre.name", label: "Genre" },
+    { path: "dateOut", label: "Rental Date" },
     {
       key: "like",
       content: movie => (
@@ -24,9 +19,9 @@ class MoviesTable extends Component {
 
   deleteColumn = {
     key: "delete",
-    content: movie => (
+    content: rental => (
       <button
-        onClick={() => this.props.onDelete(movie)}
+        onClick={() => this.props.onDelete(rental)}
         className="btn btn-danger btn-sm"
       >
         Delete
@@ -37,16 +32,16 @@ class MoviesTable extends Component {
   constructor() {
     super()
     const user = auth.getCurrentUser()
-    if (user && user.isAdmin) this.columns.push(this.deleteColumn)
+    if (user) this.columns.push(this.deleteColumn)
   }
 
   render() {
-    const { movies, onSort, sortColumn } = this.props
+    const { rentals, onSort, sortColumn } = this.props
 
     return (
       <Table
         columns={this.columns}
-        data={movies}
+        data={rentals}
         sortColumn={sortColumn}
         onSort={onSort}
       />
@@ -54,4 +49,4 @@ class MoviesTable extends Component {
   }
 }
 
-export default MoviesTable
+export default RentalsTable

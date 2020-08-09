@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React from "react"
+import { Link, NavLink } from "react-router-dom"
 
 const NavBar = ({ user }) => {
   return (
@@ -21,7 +21,7 @@ const NavBar = ({ user }) => {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
           <NavLink className="nav-item nav-link" to="/movies">
-            Movies
+            Movies 
           </NavLink>
           <NavLink className="nav-item nav-link" to="/rentals">
             Rentals
@@ -49,7 +49,7 @@ const NavBar = ({ user }) => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
