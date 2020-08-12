@@ -13,7 +13,8 @@ class MovieForm extends Form {
       genreId: "",
       genreName: "",
       numberInStock: "",
-      dailyRentalRate: ""
+      dailyRentalRate: "",
+      rentalTime:""
     },
     genres: [],
     errors: {}
@@ -36,7 +37,11 @@ class MovieForm extends Form {
       .required()
       .min(0)
       .max(10)
-      .label("Daily Rental Rate")
+      .label("Daily Rental Rate"),
+    rentalTime: Joi.number()
+      .required()
+      .min(0)
+      .label("Rental Time ")
   }
 
   async populateGenres() {
@@ -69,14 +74,16 @@ class MovieForm extends Form {
       genreId: movie.genre._id,
       genreName: movie.genre.name,
       numberInStock: movie.numberInStock,
-      dailyRentalRate: movie.dailyRentalRate
+      dailyRentalRate: movie.dailyRentalRate,
+      rentalTime: 10
     }
   }
 
   doSubmit = async () => {
     const body = {
       movieId: `${this.state.data._id}`,
-      userId: `${getCurrentUser()._id}`
+      userId: `${getCurrentUser()._id}`,
+      rentalTime: `${this.state.data.rentalTime}`
     }
     await rentMovie(body)
     window.confirm('The movie is added to your rental list')
@@ -86,13 +93,15 @@ class MovieForm extends Form {
   render() {
     return (
       <div>
-        {this.renderInfo(this.state.data)}
         <form onSubmit={this.handleSubmit}>
+          {this.renderForm("title", "Title")}
+          {this.renderForm("genreName", "Genre")}
+          {this.renderForm("numberInStock", "Number in Stock", "number")}
+          {this.renderForm("dailyRentalRate", "Daily rental rate")}
+          {this.renderInput("rentalTime", "For how many days would you like to rent it? ")}
           {this.renderButton("Rent")}
         </form>
       </div>
-
-
     )
   }
 }

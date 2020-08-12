@@ -7,6 +7,7 @@ import { getRentals, deleteRental } from "../services/rentService"
 import { getCurrentUser } from '../services/authService'
 import { getGenres } from "../services/genreService"
 import { paginate } from "../utils/paginate"
+import moment from 'moment'
 import _ from "lodash"
 import SearchBox from "./searchBox"
 
@@ -24,14 +25,15 @@ class Rentals extends Component {
   async componentDidMount() {
     const { data } = await getGenres()
     const genres = [{ _id: "", name: "All Genres" }, ...data]
-    
+
     const { data: rentals } = await getRentals(getCurrentUser()._id)
+    rentals.forEach(e => { e.dateOut = moment(e.dateOut).format('YYYY-MM-DD') })
     this.setState({ rentals, genres })
   }
 
   handleDelete = async rental => {
     let isReturn = window.confirm("Are you sure you want to return this rental?");
-    if(!isReturn) return 
+    if (!isReturn) return
 
     const originalRentals = this.state.rentals
     const rentals = originalRentals.filter(m => m._id !== rental._id)

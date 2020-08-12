@@ -71,7 +71,7 @@ class Form extends Component {
   }
 
   renderSelect(name, label, options) {
-    const { data, errors } = this.state
+    const { data, errors } = this.state;
 
     return (
       <Select
@@ -82,7 +82,7 @@ class Form extends Component {
         onChange={this.handleChange}
         error={errors[name]}
       />
-    )
+    );
   }
 
   renderInput(name, label, type = "text") {
@@ -96,6 +96,22 @@ class Form extends Component {
         label={label}
         onChange={this.handleChange}
         error={errors[name]}
+      />
+    )
+  }
+
+  renderForm(name, label, type = "text") {
+    const { data, errors } = this.state
+
+    return (
+      <Input
+        type={type}
+        name={name}
+        value={data[name]}
+        label={label}
+        onChange={this.handleChange}
+        error={errors[name]}
+        disabled
       />
     )
   }
