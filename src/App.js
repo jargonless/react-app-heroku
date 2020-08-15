@@ -29,6 +29,7 @@ class App extends Component {
       <React.Fragment>
         <ToastContainer />
         <NavBar user={user} />
+        <p className="editorInfo">This app is implemented by <b className="editorName">Yixin (Francis) Liu</b> as software development class project</p>
         <main className="container">
           <Switch>
             <Route path="/register" component={RegisterForm} />
