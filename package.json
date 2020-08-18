@@ -1,7 +1,8 @@
 {
-  "name": "vidly",
-  "version": "0.1.0",
-  "private": true,
+  "author": "Francis Liu",
+  "name": "blooming-tundra-47041",
+  "version": "1.1.0",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.1.1",
