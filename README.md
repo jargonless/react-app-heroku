@@ -1,6 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## Indroduction
+This class project was made for software development class at McGill University.  
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).  
+It's composed of two parts: a React UI and a Node.js server.  
+Also, this project is deployed on both Heroku and AWS S3. You may find the links below:  
 
-Below you will find some information on how to perform common tasks.<br>
+Heroku: https://blooming-tundra-47041.herokuapp.com  
+ASW: http://blooming-tundra-47041.s3-website.ca-central-1.amazonaws.com  
+Node.js Server: https://github.com/jargonless/Nodejs-server.git  
+
+## Installation
+Before install this react app, make sure the server is set up and running. The link to the server repository can be found in the context above.  
+  
+To install the project, first clone the repository: 
+```
+git clone https://github.com/jargonless/react-app-heroku.git
+```
+
+Then, in the folder of cloned repository, run the following command to install libraries: 
+```
+npm i
+```
+
+In case you don't have npm in your system, visit this link to install it: https://www.npmjs.com/get-npm  
+  
+Now, simply type the command below to run the react app
+```
+npm start
+```
+
+If you'd like to run this app on another port, find the file ".env.development" and change REACT_APP_API_URL to another port.
+  
+      
+
+
+Below you will find some information provided by Create React App.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
 ## Table of Contents
